@@ -1,0 +1,25 @@
+{
+  "name": "react-ssr-starter",
+  "version": "0.0.1",
+  "description": "react server side renderer starter",
+  "main": "index.js",
+  "repository": "git@github.com:wangchi/react-ssr-starter.git",
+  "author": "Wang Chi <hiwangchi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.29.1",
+    "webpack-cli": "^3.2.3",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
