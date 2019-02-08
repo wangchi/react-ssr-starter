@@ -1,11 +1,6 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-
-const Home = () => {
-  return (
-    <div onClick={() => alert('click')}>hello walker</div>
-  );
-}
+import Home from '../pages/Home';
 
 hydrate(<Home/>, document.getElementById('app'));
 

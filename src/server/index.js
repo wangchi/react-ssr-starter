@@ -1,19 +1,13 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import Home from '../pages/Home';
 
 const app = express();
 
 app.use(express.static('public'));
 
-const Hello = () => {
-  // return <div>hello walker</div>;
-  return <div onClick={() => alert('click')}>hello walker</div>
-}
-
-const body = renderToString(<Hello/>);
-
-console.log(body);
+const body = renderToString(<Home/>);
 
 app.get('*', (req, res) => {
   const html = `
