@@ -4,8 +4,11 @@ import { renderToString } from 'react-dom/server';
 
 const app = express();
 
+app.use(express.static('public'));
+
 const Hello = () => {
-  return <div>hello walker</div>;
+  // return <div>hello walker</div>;
+  return <div onClick={() => alert('click')}>hello walker</div>
 }
 
 const body = renderToString(<Hello/>);
@@ -23,7 +26,8 @@ app.get('*', (req, res) => {
       <title>Document</title>
     </head>
     <body>
-      ${body}
+      <div id="app">${body}</div>
+      <script src="/index.js"></script>
     </body>
     </html>`;
 

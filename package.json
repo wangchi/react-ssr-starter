@@ -8,8 +8,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "npm-run-all --parallel dev:**",
-    "dev:build": "webpack --config webpack.config.js --watch",
-    "dev:start": "nodemon --watch build exec node \"build/bundle.js\""
+    "dev:start": "nodemon --watch build exec node \"build/bundle.js\"",
+    "dev:build:client": "webpack --config webpack.config.client.js --watch",
+    "dev:build:server": "webpack --config webpack.config.server.js --watch"
   },
   "dependencies": {
     "express": "^4.16.4",
