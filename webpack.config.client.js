@@ -1,4 +1,6 @@
 const path = require('path');
+const webpackMerge = require('webpack-merge');
+const clientConfig = require('./webpack.base.config.js');
 
 module.exports = {
   entry: './src/client/index.js',
