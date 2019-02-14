@@ -2,8 +2,9 @@ import express from 'express';
 import React, { Fragment } from 'react';
 import { renderToString } from 'react-dom/server';
 // import App from '../App';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import { StaticRouter, Route } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 import routes from '../Routes';
 
 
@@ -18,14 +19,14 @@ app.get('*', (req, res) => {
     return (
       <StaticRouter location={req.path} context={{}}>
         <Fragment>
-          <Header/>
-          {
+          {renderRoutes(routes)}
+          {/* {
             routes.map(route => (
               <Route key={route.key} path={route.path} render={props => (
                 <route.component {...props} routes={route.routes}/>
               )}/>
             ))
-          }
+          } */}
         </Fragment>
       </StaticRouter>
     );

@@ -5,7 +5,6 @@ import Login from './pages/Login';
 const routes = [
   {
     path: '/',
-    exact: true,
     component: App,
     key: 'app',
     routes: [
@@ -17,6 +16,7 @@ const routes = [
       },
       {
         path: '/login',
+        exact: true,
         component: Login,
         key: 'login',
       }
