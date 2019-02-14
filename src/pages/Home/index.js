@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Home = () => {
-  // return <div>hello walker</div>;
-  return <div onClick={() => alert('click')}>hello walker</div>
+
+class Home extends Component {
+  render() {
+    return <div onClick={() => alert('click')}>hello walker</div>
+  }
 }
 
 export default Home;

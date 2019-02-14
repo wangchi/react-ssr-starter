@@ -1,15 +1,37 @@
 import express from 'express';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { renderToString } from 'react-dom/server';
-import Home from '../pages/Home';
+// import App from '../App';
+import Header from '../components/Header';
+import { StaticRouter, Route } from 'react-router-dom';
+import routes from '../Routes';
+
 
 const app = express();
 
 app.use(express.static('public'));
 
-const body = renderToString(<Home/>);
 
 app.get('*', (req, res) => {
+
+  const App = () => {
+    return (
+      <StaticRouter location={req.path} context={{}}>
+        <Fragment>
+          <Header/>
+          {
+            routes.map(route => (
+              <Route key={route.key} path={route.path} render={props => (
+                <route.component {...props} routes={route.routes}/>
+              )}/>
+            ))
+          }
+        </Fragment>
+      </StaticRouter>
+    );
+  }
+  const body = renderToString(<App/>);
+
   const html = `
     <!DOCTYPE html>
     <html lang="en">
