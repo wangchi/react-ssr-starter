@@ -7,6 +7,16 @@ import { StaticRouter, Route } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import routes from '../Routes';
 
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+const reducer = (state = { name: 'walkerbe' }, action) => {
+  return state;
+}
+
+const store = createStore(reducer, applyMiddleware(thunk));
+
 
 const app = express();
 
@@ -17,21 +27,23 @@ app.get('*', (req, res) => {
 
   const App = () => {
     return (
-      <StaticRouter location={req.path} context={{}}>
-        <Fragment>
-          {renderRoutes(routes)}
-          {/* {
-            routes.map(route => (
-              <Route key={route.key} path={route.path} render={props => (
-                <route.component {...props} routes={route.routes}/>
-              )}/>
-            ))
-          } */}
-        </Fragment>
-      </StaticRouter>
+      <Provider store={store}>
+        <StaticRouter location={req.path} context={{}}>
+          <Fragment>
+            {renderRoutes(routes)}
+            {/* {
+              routes.map(route => (
+                <Route key={route.key} path={route.path} render={props => (
+                  <route.component {...props} routes={route.routes}/>
+                )}/>
+              ))
+            } */}
+          </Fragment>
+        </StaticRouter>
+      </Provider>
     );
   }
-  const body = renderToString(<App/>);
+  const content = renderToString(<App/>);
 
   const html = `
     <!DOCTYPE html>
@@ -43,7 +55,7 @@ app.get('*', (req, res) => {
       <title>Document</title>
     </head>
     <body>
-      <div id="app">${body}</div>
+      <div id="app">${content}</div>
       <script src="/index.js"></script>
     </body>
     </html>`;
