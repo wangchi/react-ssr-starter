@@ -2,20 +2,13 @@ import React, { Fragment } from 'react';
 import { hydrate } from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import routes from '../Routes';
-
-const reducer = (state = { name: 'walkerbe' }, action) => {
-  return state;
-}
-
-const store = createStore(reducer, applyMiddleware(thunk));
+import { getClientStore } from '../store';
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <Provider store={getClientStore()}>
       <BrowserRouter>
         <Fragment>
           {renderRoutes(routes)}
