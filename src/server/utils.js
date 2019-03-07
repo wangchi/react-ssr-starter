@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { renderToString } from 'react-dom/server';
+// import { renderToString } from 'react-dom/server';
+import { render as renderToString } from 'react-dom-faster';
 // import App from '../App';
 // import Header from '../components/Header';
 import { StaticRouter, Route } from 'react-router-dom';

@@ -17,6 +17,7 @@
     "express": "^4.16.4",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "react-dom-faster": "^1.1.0",
     "react-redux": "^6.0.0",
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
