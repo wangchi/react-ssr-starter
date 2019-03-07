@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { hydrate } from 'react-dom';
+import { hydrate, render } from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
@@ -25,6 +25,7 @@ const App = () => {
   );
 };
 
-hydrate(<App/>, document.getElementById('app'));
+// hydrate(<App/>, document.getElementById('app'));
+render(<App/>, document.getElementById('app'));
 
 

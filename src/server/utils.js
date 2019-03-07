@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-// import { renderToString } from 'react-dom/server';
-import { render as renderToString } from 'react-dom-faster';
+// import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import renderToStaticMarkup from 'react-dom-faster';
 // import App from '../App';
 // import Header from '../components/Header';
 import { StaticRouter, Route } from 'react-router-dom';
@@ -8,6 +8,9 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import routes from '../Routes';
 import { Provider } from 'react-redux';
 import { getStore } from '../store';
+
+console.log('--- renderToStaticMarkup: -----');
+console.log(renderToStaticMarkup);
 
 export const render = (req, res) => {
   const store = getStore();
@@ -27,7 +30,7 @@ export const render = (req, res) => {
   Promise.all(promises).then(() => {
     // console.log(store.getState());
 
-    const content = renderToString((
+    const content = renderToStaticMarkup(() => (
       <Provider store={store}>
         <StaticRouter location={req.path} context={{}}>
           <Fragment>
